@@ -5,16 +5,16 @@
 //  Created by Antoine van der Lee on 19/02/2023.
 //
 
+import Combine
 import Foundation
 
 @MainActor
-@Observable
-final class RoadmapViewModel {
+final class RoadmapViewModel: ObservableObject {
     static let allStatusFilter: String = "all"
 
-    private var features: [RoadmapFeature] = []
-    var searchText = ""
-    var statusToFilter = RoadmapViewModel.allStatusFilter
+    @Published private var features: [RoadmapFeature] = []
+    @Published var searchText = ""
+    @Published var statusToFilter = RoadmapViewModel.allStatusFilter
 
     var filteredFeatures: [RoadmapFeature] {
         if statusToFilter == "all" && searchText.isEmpty {
@@ -54,7 +54,7 @@ final class RoadmapViewModel {
     
     let allowSearching: Bool
     let allowsFilterByStatus: Bool
-    var statuses: [String] = []
+    @Published var statuses: [String] = []
 
     private let configuration: RoadmapConfiguration
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RoadmapFeatureView: View {
     @Environment(\.dynamicTypeSize) var typeSize
-    @State var viewModel: RoadmapFeatureViewModel
+    @ObservedObject var viewModel: RoadmapFeatureViewModel
     
     var body: some View {
         ZStack{

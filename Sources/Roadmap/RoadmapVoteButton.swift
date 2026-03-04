@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RoadmapVoteButton: View {
-    @State var viewModel: RoadmapFeatureViewModel
+    @ObservedObject var viewModel: RoadmapFeatureViewModel
     @Environment(\.dynamicTypeSize) private var typeSize
     
     @State private var isHovering = false
@@ -72,14 +72,14 @@ struct RoadmapVoteButton: View {
         .accessibilityShowsLargeContentViewer()
         .accessibilityIdentifier("roadmap_vote_button")
         .disabled(!viewModel.canVote)
-        .onChange(of: viewModel.voteCount) { _, newCount in
+        .onChange(of: viewModel.voteCount) { newCount in
             if newCount > 0 {
                 withAnimation(.spring(response: 0.45, dampingFraction: 0.4)) {
                     showNumber = true
                 }
             }
         }
-        .onChange(of: viewModel.feature.hasVoted) { _, newVote in
+        .onChange(of: viewModel.feature.hasVoted) { newVote in
             withAnimation(.spring(response: 0.45, dampingFraction: 0.4)) {
                 hasVoted = newVote
             }

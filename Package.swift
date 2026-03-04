@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Roadmap",
     platforms: [
-        .iOS(.v17),
+        .iOS(.v16),
         .macOS(.v14),
         .visionOS(.v1)
     ],

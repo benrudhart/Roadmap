@@ -5,17 +5,17 @@
 //  Created by Antoine van der Lee on 19/02/2023.
 //
 
+import Combine
 import Foundation
 import SwiftUI
 
 @MainActor
-@Observable
-final class RoadmapFeatureViewModel {
+final class RoadmapFeatureViewModel: ObservableObject {
     let feature: RoadmapFeature
     let configuration: RoadmapConfiguration
     let canVote: Bool
 
-    var voteCount = 0
+    @Published var voteCount = 0
 
     init(feature: RoadmapFeature, configuration: RoadmapConfiguration) {
         self.feature = feature
